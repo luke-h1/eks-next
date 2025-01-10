@@ -40,6 +40,11 @@ jobs:
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
+      - name: Configure Kubernetes client
+        uses: silverlyra/setup-aws-eks@v0.1
+        with:
+          cluster: EKS-lho-dev-cluster
+
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --name EKS-lho-dev-cluster --region eu-west-2
 

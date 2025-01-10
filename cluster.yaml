@@ -3,6 +3,7 @@ kind: ClusterConfig
 metadata:
   name: EKS-lho-dev-cluster
   region: eu-west-2
+  version: "1.31"
 
 vpc:
   id: vpc-0887a361af334c37c

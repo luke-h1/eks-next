@@ -1,0 +1,29 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: EKS-lho-dev-cluster
+  region: eu-west-2
+
+vpc:
+  id: vpc-0887a361af334c37c
+  cidr: "172.31.0.0/16"
+  subnets:
+    public:
+      eu-west-2a:
+        id: subnet-05be943e891b90d38
+      eu-west-2b:
+        id: subnet-0dddf26be7ba9c2bf
+    private:
+      eu-west-2a:
+        id: subnet-05be943e891b90d38
+      eu-west-2b:
+        id: subnet-0dddf26be7ba9c2bf
+
+nodeGroups:
+  - name: EKS-public-workers
+    instanceType: t2.micro
+    desiredCapacity: 2
+  - name: EKS-private-workers
+    instanceType: t2.micro
+    desiredCapacity: 1
+    privateNetworking: true

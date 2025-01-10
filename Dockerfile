@@ -7,8 +7,6 @@ RUN npm i -g pnpm
 
 WORKDIR /app
 
-FROM base as builder
-
 COPY . .
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
